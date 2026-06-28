@@ -1,0 +1,16 @@
+{
+  "summary": "任务概述：图节点分类任务，使用GNN模型对金融场景中的节点进行分类。\n关键挑战：1) 图数据的稀疏性 2) 类别不平衡 3) 模型泛化能力\n建议方法：GraphSAGE（默认）、GCN、GAT，可尝试不同的层数和隐藏维度。\n优化方向：调整学习率、dropout、模型容量，尝试不同的GNN变体。",
+  "data_insights": "任务类型: classification\n数据路径: data/cls_data/A1.npz\n文件中的键: ['adj_data', 'adj_indices', 'adj_indptr', 'adj_shape', 'attr_data', 'attr_indices', 'attr_indptr', 'attr_shape', 'labels', 'train_idx', 'test_idx']\n节点数: 13752\n特征维度: 767\n类别数: 10\n总标签数: 13752, 有效标签数: 11001\n训练集大小: 11001\n测试集大小: 2751\n邻接矩阵非零元: 27995, 稀疏度: 0.999852",
+  "key_challenges": [
+    "数据稀疏性处理",
+    "模型泛化能力提升",
+    "超参数优化"
+  ],
+  "suggested_approaches": [
+    "调整学习率和dropout",
+    "尝试不同模型架构",
+    "增加模型容量"
+  ],
+  "code_analysis": "=== models.py ===\n文件大小: 11346 字符\n行数: 365\n类定义: ['class GCNLayer(nn.Module):', 'class SAGELayer(nn.Module):', 'class GATLayer(nn.Module):', 'class GNNClassifier(nn.Module):', 'class GRU4Rec(nn.Module):', 'class SASRec(nn.Module):', 'class MultiHeadSASRec(nn.Module):']\n主要函数: ['def forward(self, x, adj):', 'def forward(self, x, adj):', 'def forward(self, x, adj):', 'def forward(self, x, adj):', 'def get_node_embeddings(self, x, adj):']\n=== datasets.py ===\n文件大小: 9349 字符\n行数: 305\n类定义: ['class GraphDataset:', 'class RecDataset(Dataset):', 'class NegativeSamplingDataset(Dataset):']\n主要函数: ['def load(data_path):', 'def preprocess_features(features):', 'def load_rec_data(data_dir, max_seq_len=50):', 'def parse_seq(seq_str, iid2idx):']\n=== train.py ===\n文件大小: 18937 字符\n行数: 581\n主要函数: ['def parse_args():', 'def train_task1(args):', 'def train_task2(args):', 'def main():']\n=== infer.py ===\n文件大小: 15493 字符\n行数: 497\n主要函数: ['def parse_args():', 'def load_model_from_checkpoint(checkpoint_path, device):', 'def infer_task1(args):', 'def infer_task2(args):', 'def infer_task2_v2(args):']\n=== utils.py ===\n文件大小: 13808 字符\n行数: 539\n类定义: ['class EarlyStopping:', 'class MetricsTracker:']\n主要函数: ['def normalize_adj(adj):', 'def random_walk_normalize(adj):', \"def sparse_to_torch(sparse_mx, device='cpu', return_sparse=False):\", 'def split_train_val(train_idx, val_ratio=0.2, seed=42):', 'def stratified_split(labels, train_idx, val_ratio=0.2, seed=42):']",
+  "timestamp": "2026-06-05T09:16:16.109743"
+}

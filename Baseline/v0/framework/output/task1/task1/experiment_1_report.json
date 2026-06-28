@@ -1,0 +1,15 @@
+{
+  "iteration": 1,
+  "metrics": {
+    "train_loss": 0.14270858466625214,
+    "train_acc": 0.9605090394909606,
+    "val_loss": 1.9510101079940796,
+    "val_acc": 0.6145454545454545,
+    "val_ndcg": [],
+    "learning_rate": 0.0025
+  },
+  "decision": "CONTINUE",
+  "reason": "当前指标(0.6145)为最佳，继续优化",
+  "duration": 160.72171545028687,
+  "timestamp": "2026-06-04T22:47:44.739410"
+}
